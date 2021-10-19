@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 10:15:32 by achanel           #+#    #+#             */
-/*   Updated: 2021/10/19 10:19:04 by achanel          ###   ########.fr       */
+/*   Created: 2021/10/19 10:21:33 by achanel           #+#    #+#             */
+/*   Updated: 2021/10/19 10:36:12 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
+int	main(int ac, char **av)
+{
 
-#endif
+}
