@@ -1,41 +1,43 @@
-NAME	= philo
+NAME		= philo
 
-INCLUDES = -I$(HEADERS_DIRECTORY)
+FILES		= philo.c utils.c
 
-HEADERS_LIST = push_swap.h
-HEADERS_DIRECTORY = ./includes/
-HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
+HEADER_FILE	= includes/philo.h
 
-SRCS_DIRECTORY = ./src/
-SRCS_LIST	= philo.c
-SRCS = $(addprefix $(SRCS_DIRECTORY), $(SRCS_LIST))
+HEADER		= -I includes/
 
-OBJS_DIRECTORY = objects/
-OBJS_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
-OBJS = $(addprefix $(OBJS_DIRECTORY), $(OBJS_LIST))
+SDIR		= ./
+
+SRCS		= $(patsubst %.c, ${SDIR}/%.c, $(FILES))
+
+BONUS		= 
+
+OBJS		= ${SRCS:.c=.o}
+
+BONUS_OBJS	= ${BONUS:.c=.o}
 
 CC			= gcc
+RM			= rm -f
 
 CFLAGS	= -Wall -Wextra -Werror
 
 all:		${NAME}
 
-$(NAME):	$(OBJS_DIRECTORY) $(OBJS)
-			@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
+.c.o:	
+		 	${CC} $(HEADER) ${CFLAGS} -c $< -o $(<:.c=.o)
 
-$(OBJS_DIRECTORY):
-			mkdir -p $(OBJS_DIRECTORY)
+$(NAME):	${OBJS} ${HEADER_FILE}
+				$(CC) $(HEADER) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJS_DIRECTORY)%.o : $(SRCS_DIRECTORY)%.c $(HEADERS)
-			@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
+# bonus:		${BONUS_OBJS} ${OBJS} 
+# 					ar rcs ${NAME} $?
 		
 clean:
-			@$(MAKE) -sC
-			@rm -rf $(OBJS_DIRECTORY)
+					${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean:		clean
-			@rm -f $(NAME)
+					${RM} ${NAME}
 
-re:			fclean all
+re:					fclean all
 
 .PHONY:		all clean fclean re bonus
