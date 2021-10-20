@@ -1,6 +1,6 @@
 NAME		= philo
 
-FILES		= philo.c utils.c
+FILES		= philo.c utils.c solve.c solve_utilc.c
 
 HEADER_FILE	= includes/philo.h
 
@@ -19,15 +19,15 @@ BONUS_OBJS	= ${BONUS:.c=.o}
 CC			= gcc
 RM			= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 all:		${NAME}
 
 .c.o:	
-		 	${CC} $(HEADER) ${CFLAGS} -c $< -o $(<:.c=.o)
+		 	${CC} ${CFLAGS} $(HEADER) -c $< -o $(<:.c=.o)
 
 $(NAME):	${OBJS} ${HEADER_FILE}
-				$(CC) $(HEADER) $(CFLAGS) $(OBJS) -o $(NAME)
+				$(CC) $(CFLAGS) $(HEADER) $(OBJS) -o $(NAME)
 
 # bonus:		${BONUS_OBJS} ${OBJS} 
 # 					ar rcs ${NAME} $?

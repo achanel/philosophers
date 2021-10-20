@@ -6,13 +6,19 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:22:35 by achanel           #+#    #+#             */
-/*   Updated: 2021/10/19 12:51:54 by achanel          ###   ########.fr       */
+/*   Updated: 2021/10/20 15:26:54 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	ft_atoi(const char *str)
+void	free_base(t_philo *base)
+{
+	if (base)
+		free(base);
+}
+
+int	ft_atoi(const char *str)
 {
 	int		neg;
 	long	res;
@@ -55,7 +61,7 @@ int	check_arg(int ac, char **av)
 	ac -= 1;
 	while (ac)
 	{
-		while(av[ac][i])
+		while(av[ac][i] != '\0')
 		{
 			i = 0;
 			if (!ft_isdigit(av[ac][i]))
@@ -64,6 +70,7 @@ int	check_arg(int ac, char **av)
 		}
 		if (ft_atoi(av[ac]) < 1)
 			return (1);
+		ac--;
 	}
 	return (0);
 }
