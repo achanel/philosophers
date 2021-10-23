@@ -1,6 +1,6 @@
 NAME		= philo
 
-FILES		= philo.c utils.c solve.c solve_utilc.c
+FILES		= philo.c utils.c solve.c solve_utils.c
 
 HEADER_FILE	= includes/philo.h
 

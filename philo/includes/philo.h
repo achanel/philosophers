@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:15:32 by achanel           #+#    #+#             */
-/*   Updated: 2021/10/20 17:30:05 by achanel          ###   ########.fr       */
+/*   Updated: 2021/10/22 12:43:50 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,36 @@
 # include <stdio.h>
 # include <sys/time.h>
 
-typedef struct	s_philo
+typedef struct s_base
 {
-	pthread_t		*philo;
+	pthread_t		*philosopher;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	print;
 	pthread_mutex_t	lock;
-	int				ph_count;
+	int				ph_number;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				eating_count;
+	int				meals;
 	long			start_time;
 	int				*life_time;
-	int				philo_num;
-	int				eats;
-}	t_philo;
-
-// philo.c
+	int				i;
+}	t_base;
 
 // solve_utils.c
-int	ft_death(t_philo *base);
+void	phil_life_helper(t_base *base, int eating_times, int number);
+int		ft_death(t_base *base);
 long	ft_start_time(void);
-long	ft_time(t_philo *base);
-void	ft_print(t_philo *base, char *s);
+long	ft_time(t_base *base);
 void	ft_delay(int ms);
 // solve.c
+void	eating(t_base *base, int number);
 void	*waiter_life(void *base);
 void	*phil_life(void *base);
-void	solve(t_philo *base);
+void	solve(t_base *base);
 // utils.c
-void	free_base(t_philo *base);
+void	ft_print(t_base *base, int phil_number, char *s);
+void	free_base(t_base *base);
 int		ft_atoi(const char *str);
 int		check_arg(int ac, char **av);
 #endif

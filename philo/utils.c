@@ -6,14 +6,27 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:22:35 by achanel           #+#    #+#             */
-/*   Updated: 2021/10/20 15:26:54 by achanel          ###   ########.fr       */
+/*   Updated: 2021/10/23 18:16:35 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	free_base(t_philo *base)
+void	ft_print(t_base *base, int phil_number, char *s)
 {
+	pthread_mutex_lock(&base->print);
+	printf("%ld %d %s\n", ft_time(base), phil_number, s);
+	pthread_mutex_unlock(&base->print);
+}
+
+void	free_base(t_base *base)
+{
+	if (base->philosopher)
+		free(base->philosopher);
+	if (base->fork)
+		free(base->fork);
+	if (base->life_time)
+		free(base->life_time);
 	if (base)
 		free(base);
 }
@@ -61,9 +74,9 @@ int	check_arg(int ac, char **av)
 	ac -= 1;
 	while (ac)
 	{
-		while(av[ac][i] != '\0')
+		i = 0;
+		while (av[ac][i] != '\0')
 		{
-			i = 0;
 			if (!ft_isdigit(av[ac][i]))
 				return (1);
 			i++;
