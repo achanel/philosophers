@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:22:35 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/01 16:15:04 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/01 17:53:36 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 void	ft_error(char *message)
 {
@@ -23,11 +23,11 @@ void	ft_error(char *message)
 	exit (1);
 }
 
-void	ft_print(t_base *base, int phil_number, char *s)
+void	ft_print(t_base *base, t_phil *phil, char *s)
 {
-	pthread_mutex_lock(&base->print);
-	printf("%ld %d %s\n", ft_time(base), phil_number, s);
-	pthread_mutex_unlock(&base->print);
+	sem_wait(base->print);
+	printf("%ld %d %s\n", ft_time(base), phil->index + 1, s);
+	sem_post(base->print);
 }
 
 int	ft_atoi(const char *str)

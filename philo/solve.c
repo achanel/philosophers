@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:06:03 by achanel           #+#    #+#             */
-/*   Updated: 2021/10/23 18:12:08 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/01 16:33:36 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	eating(t_base *base, int number)
 	else
 		r_fork = number - 2;
 	pthread_mutex_lock(&base->fork[r_fork]);
-	ft_print(base, number, "has taken a fork");
+	ft_prsint(base, number, "has taken a fork");
 	pthread_mutex_lock(&base->fork[l_fork]);
 	ft_print(base, number, "has taken a fork");
 	base->life_time[number - 1] = ft_time(base);
@@ -57,16 +57,15 @@ void	*phil_life(void *base)
 	if (((t_base *)base)->meals > 0)
 		eating_times = ((t_base *)base)->meals;
 	number = ((t_base *)base)->i + 1;
-	pthread_mutex_unlock(&((t_base *)base)->lock);
 	((t_base *)base)->life_time[number - 1] = ft_time(base);
 	if (!number % 2)
 		ft_delay(((t_base *)base)->time_to_eat / 2);
 	while (eating_times)
 	{
-		ft_print(base, number, "is thinking");
 		eating(base, number);
 		ft_print(base, number, "is sleeping");
 		ft_delay(((t_base *)base)->time_to_sleep);
+		ft_print(base, number, "is thinking");
 		if (eating_times > 0)
 			eating_times--;
 	}
@@ -74,11 +73,13 @@ void	*phil_life(void *base)
 	return (NULL);
 }
 
-static void	solve_helper(t_base *base)
+static void	waiter_init(t_base *base)
 {
 	pthread_t	waiter;
 
 	waiter = (pthread_t)malloc(sizeof(pthread_t));
+	if (!waiter)
+		ft_error("MALLOC ERROR");
 	pthread_create(&waiter, NULL, waiter_life, (void *)base);
 	pthread_join(waiter, NULL);
 	pthread_mutex_destroy(&base->print);
@@ -93,24 +94,22 @@ static void	solve_helper(t_base *base)
 void	solve(t_base *base)
 {
 	base->i = 0;
-	pthread_mutex_init(&base->lock, NULL);
-	pthread_mutex_init(&base->print, NULL);
+	if (pthread_mutex_init(&base->print, NULL) != 0);
+		ft_error("MUTEX_INIT ERROR");
 	while (base->i < base->ph_number)
 	{
-		pthread_mutex_init(&base->fork[base->i], NULL);
+		if (pthread_mutex_init(&base->fork[base->i], NULL) != 0);
+			ft_error("MUTEX_INIT ERROR");
 		base->i++;
 	}
 	base->i = 0;
 	while (base->i < base->ph_number)
 	{
-		pthread_mutex_lock(&base->lock);
-		pthread_create(&base->philosopher[base->i], NULL,
-			phil_life, (void *)base);
+		if (pthread_create(&base->philosopher[base->i], NULL,
+			phil_life, (void *)base) != 0);
+			ft_error("THREAD ERROR");
 		pthread_detach(base->philosopher[base->i]);
-		pthread_mutex_lock(&base->lock);
 		base->i++;
-		pthread_mutex_unlock(&base->lock);
 	}
-	pthread_mutex_destroy(&base->lock);
-	solve_helper(base);
+	waiter_init(base);
 }
