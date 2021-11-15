@@ -6,29 +6,11 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:22:35 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/01 16:15:04 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/15 13:45:57 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	ft_error(char *message)
-{
-	int	i;
-
-	i = 0;
-	while (message[i] != '\0')
-		i++;
-	write(2, message, i);
-	exit (1);
-}
-
-void	ft_print(t_base *base, int phil_number, char *s)
-{
-	pthread_mutex_lock(&base->print);
-	printf("%ld %d %s\n", ft_time(base), phil_number, s);
-	pthread_mutex_unlock(&base->print);
-}
 
 int	ft_atoi(const char *str)
 {

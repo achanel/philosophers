@@ -28,9 +28,6 @@ all:		${NAME}
 
 $(NAME):	${OBJS} ${HEADER_FILE}
 				$(CC) $(CFLAGS) $(HEADER) $(OBJS) -o $(NAME)
-
-# bonus:		${BONUS_OBJS} ${OBJS} 
-# 					ar rcs ${NAME} $?
 		
 clean:
 					${RM} ${OBJS} ${BONUS_OBJS}

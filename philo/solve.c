@@ -6,13 +6,46 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:06:03 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/12 14:58:29 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/15 16:08:02 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	eating(t_base *base, int number)
+static void	phil_life_helper(t_base *base, int eating_times, int number)
+{
+	if (eating_times == 0)
+	{
+		base->i--;
+		base->life_time[number - 1] = -1;
+	}
+}
+
+static int	ft_stick(t_base *base)
+{
+	long	time;
+	int		i;
+	int		g;
+
+	i = -1;
+	time = ft_time(base) - 2;
+	while (++i < base->ph_number)
+	{
+		g = base->life_time[i];
+		if (base->life_time[i] != -1)
+		{
+			if ((base->life_time[i] + base->time_to_die) < time)
+			{
+				pthread_mutex_lock(&base->print);
+				printf("%ld %d %s", ft_time(base), i + 1, "died\n");
+				return (0);
+			}
+		}
+	}
+	return (1);
+}
+
+static void	eating(t_base *base, int number)
 {
 	int	l_fork;
 	int	r_fork;
@@ -33,83 +66,47 @@ void	eating(t_base *base, int number)
 	pthread_mutex_unlock(&base->fork[r_fork]);
 }
 
-void	*waiter_life(void *base)
+void	*waiter_life(void *void_base)
 {
-	int	flag;
+	t_base	*base;
+	int		not_dead;
 
-	flag = 1;
-	while (flag)
+	base = (t_base *)void_base;
+	not_dead = 1;
+	while (not_dead)
 	{
-		flag = ft_death((t_base *)base);
-		if (((t_base *)base)->i <= 0 && ((t_base *)base)->meals > 0 && flag)
-			flag = 0;
+		not_dead = ft_stick(base);
+		if (base->i <= 0 && base->meals > 0 && not_dead)
+			not_dead = 0;
 	}
 	ft_delay(4);
 	return (NULL);
 }
 
-void	*phil_life(void *base)
+void	*phil_life(void *void_base)
 {
-	int	eating_times;
-	int	number;
+	int		eating_times;
+	int		number;
+	t_base	*base;
 
+	base = (t_base *)void_base;
 	eating_times = -1;
-	if (((t_base *)base)->meals > 0)
-		eating_times = ((t_base *)base)->meals;
-	number = ((t_base *)base)->i + 1;
-	((t_base *)base)->life_time[number - 1] = ft_time(base);
+	if (base->meals > 0)
+		eating_times = base->meals;
+	number = base->i + 1;
+	pthread_mutex_unlock(&base->lock);
+	base->life_time[number - 1] = ft_time(base);
 	if (!number % 2)
-		ft_delay(((t_base *)base)->time_to_eat / 2);
+		ft_delay(base->time_to_eat / 2);
 	while (eating_times)
 	{
 		eating(base, number);
 		ft_print(base, number, "is sleeping");
-		ft_delay(((t_base *)base)->time_to_sleep);
+		ft_delay(base->time_to_sleep);
 		ft_print(base, number, "is thinking");
 		if (eating_times > 0)
 			eating_times--;
 	}
-	phil_life_helper(((t_base *)base), eating_times, number);
+	phil_life_helper(base, eating_times, number);
 	return (NULL);
-}
-
-static void	waiter_init(t_base *base)
-{
-	pthread_t	waiter;
-
-	waiter = (pthread_t)malloc(sizeof(pthread_t));
-	if (!waiter)
-		ft_error("MALLOC ERROR");
-	pthread_create(&waiter, NULL, waiter_life, (void *)base);
-	pthread_join(waiter, NULL);
-	pthread_mutex_destroy(&base->print);
-	base->i = 0;
-	while (base->i < base->ph_number)
-	{
-		pthread_mutex_destroy(&base->fork[base->i]);
-		base->i++;
-	}
-}
-
-void	solve(t_base *base)
-{
-	base->i = 0;
-	if (pthread_mutex_init(&base->print, NULL) != 0)
-		ft_error("MUTEX_INIT ERROR");
-	while (base->i < base->ph_number)
-	{
-		if (pthread_mutex_init(&base->fork[base->i], NULL) != 0)
-			ft_error("MUTEX_INIT ERROR");
-		base->i++;
-	}
-	base->i = 0;
-	while (base->i < base->ph_number)
-	{
-		if (pthread_create(&base->philosopher[base->i], NULL,
-			phil_life, (void *)base) != 0)
-			ft_error("THREAD ERROR");
-		pthread_detach(base->philosopher[base->i]);
-		base->i++;
-	}
-	waiter_init(base);
 }
