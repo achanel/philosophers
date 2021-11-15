@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:15:32 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/01 17:53:49 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/15 16:53:22 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,42 +25,31 @@ typedef struct s_base
 {
 	sem_t		*fork;
 	sem_t		*print;
+	pid_t		*philosopher;
+	long		start_time;
 	int			ph_number;
+	int			meals;
 	int			time_to_die;
 	int			time_to_eat;
 	int			time_to_sleep;
-	int			meals;
-	long		start_time;
-	int			status;
-	int			is_dead;
 	int			i;
 	int			j;
+	int			status;
+	int			*life_time;
 }	t_base;
 
-typedef struct	s_phil
-{
-	int			index;
-	pid_t		philosopher;
-	pthread_t	waiter;
-	t_base		*base;
-	int			phil_meals;
-	int			life_time;
-}				t_phil;
-
 // solve_utils_bonus.c
-void	phil_life_helper(t_base *base, int eating_times, int number);
-int		ft_death(t_base *base);
-long	ft_start_time(void);
+void	ft_error(char *message);
+void	ft_print(t_base *base, int ph_index, char *s);
+// int		ft_death(t_base *base);
+long	ft_cur_time(void);
 long	ft_time(t_base *base);
 void	ft_delay(int ms);
 // solve_bonus.c
-void	eating(t_base *base, t_phil *phil);
 void	*waiter_life(void *base);
-void	phil_life(t_base *base, t_phil *phil);
+void	phil_life(t_base *base);
 void	solve(t_base *base);
 // utils_bonus.c
-void	ft_error(char *message);
-void	ft_print(t_base *base, t_phil *phil, char *s);
 int		ft_atoi(const char *str);
 int		check_arg(int ac, char **av);
 #endif

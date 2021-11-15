@@ -6,8 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `philo_bonus.o', needed by `philo_bonus'.  Stop.
+ 
 
-# Make data base, printed on Mon Nov  1 15:09:46 2021
+# Make data base, printed on Mon Nov 15 17:42:46 2021
 
 # Variables
 
@@ -36,7 +39,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 22)
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # makefile (from `Makefile', line 11)
@@ -48,13 +51,13 @@ BONUS =
 # makefile (from `Makefile', line 15)
 OBJS = ${SRCS:.c=.o}
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vm6800yx1k/T/vscode-ipc-d25fe9f4-c770-4b64-9964-3700cfd9ef18.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vm6800yx1k/T/vscode-ipc-6dc7b6c3-c395-433e-9c59-371873faf12a.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.SakAVeVUrH/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.QDN4akgxNi/Render
 # environment
-PATH = /Users/achanel/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /Users/achanel/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -64,7 +67,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.RCx50TVonR/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UyQqn3l51T/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -136,7 +139,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000018.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000008.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -158,7 +161,7 @@ HEADER = -I includes/
 # makefile (from `Makefile', line 5)
 HEADER_FILE = includes/philo_bonus.h
 # environment
-SECURITYSESSIONID = 18705
+SECURITYSESSIONID = 186fe
 # automatic
 ^F = $(notdir $^)
 # default
@@ -170,7 +173,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 80865
+VSCODE_PID = 80334
 # makefile (from `Makefile', line 3)
 FILES = philo_bonus.c utils_bonus.c solve_bonus.c solve_utils_bonus.c
 # variable set hash-table stats:
@@ -182,9 +185,9 @@ FILES = philo_bonus.c utils_bonus.c solve_bonus.c solve_utils_bonus.c
 
 # Directories
 
-# . (device 16777227, inode 1169311): 12 files, no impossibilities.
+# . (device 16777227, inode 1169311): 10 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -198,6 +201,7 @@ all: philo_bonus
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -214,16 +218,14 @@ all: philo_bonus
 
 # Not a target:
 solve_bonus.o:
-#  Implicit rule search has been done.
-#  File does not exist.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-30 15:15:32
+#  Last modified 2021-11-15 17:42:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -260,12 +262,9 @@ fclean: clean
 
 # Not a target:
 utils_bonus.o:
-#  Implicit rule search has been done.
-#  Last modified 2021-10-30 18:33:51
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -291,9 +290,8 @@ clean:
 # Not a target:
 philo_bonus.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-30 18:33:51
-#  File has been updated.
-#  Successfully updated.
+#  File does not exist.
+#  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -311,9 +309,6 @@ philo_bonus: philo_bonus.o utils_bonus.o solve_bonus.o solve_utils_bonus.o inclu
 solve_utils_bonus.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
-make: *** No rule to make target `solve_bonus.o', needed by `philo_bonus'.  Stop.
- 
 #  File has not been updated.
 
 # files hash-table stats:
@@ -329,6 +324,6 @@ make: *** No rule to make target `solve_bonus.o', needed by `philo_bonus'.  Stop
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Nov  1 15:09:46 2021
+# Finished Make data base on Mon Nov 15 17:42:46 2021
 
  
