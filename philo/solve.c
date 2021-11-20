@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:06:03 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/20 14:06:39 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 18:00:22 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	*phil_life(void *void_base)
 	number = base->i + 1;
 	pthread_mutex_unlock(&base->lock);
 	base->life_time[number - 1] = ft_time(base);
-	if (!number % 2)
+	if (number % 2)
 		ft_delay(base->time_to_eat / 2);
 	while (eating_times)
 	{

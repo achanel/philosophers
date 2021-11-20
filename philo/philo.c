@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:21:33 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/20 15:27:05 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 18:23:05 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	solve(t_base *base)
 {
 	pthread_t	waiter;
 
-	if (pthread_mutex_init(&base->lock, NULL) != 0 )
+	if (pthread_mutex_init(&base->lock, NULL) != 0)
 		ft_error("MUTEX_INIT ERROR\n");
 	if (pthread_mutex_init(&base->print, NULL) != 0)
 		ft_error("MUTEX_INIT ERROR\n");
