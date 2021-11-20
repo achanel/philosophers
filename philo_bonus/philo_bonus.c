@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:21:33 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/20 14:28:46 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 15:20:03 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	solve(t_base *base)
 	{
 		base->philosopher[base->i] = fork();
 		if (base->philosopher[base->i] == -1)
-			ft_error("PID ERROR");
+			ft_error("PID ERROR\n");
 		if (!base->philosopher[base->i])
 			phil_life(base);
 	}
@@ -54,10 +54,10 @@ static void	base_init(t_base *base, int ac, char **av)
 	base->fork = sem_open("fork", O_CREAT, S_IRWXG, base->ph_number);
 	base->print = sem_open("print", O_CREAT, S_IRWXG, 1);
 	if (base->fork == SEM_FAILED || base->print == SEM_FAILED)
-		ft_error("SEM_FAILED ERROR");
+		ft_error("SEM_FAILED ERROR\n");
 	base->philosopher = (pid_t *)malloc(sizeof(pid_t) * base->ph_number);
 	if (!(base->philosopher))
-		ft_error("MALLOC ERROR");
+		ft_error("MALLOC ERROR\n");
 }
 
 int	main(int ac, char **av)
@@ -68,7 +68,7 @@ int	main(int ac, char **av)
 		ft_error("ARG ERROR\n");
 	base = (t_base *)malloc(sizeof(t_base));
 	if (!base)
-		ft_error("MALLOC ERROR");
+		ft_error("MALLOC ERROR\n");
 	base_init(base, ac, av);
 	solve(base);
 	sem_unlink("fork");

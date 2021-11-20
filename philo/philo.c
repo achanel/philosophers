@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:21:33 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/15 16:19:45 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 15:27:05 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ static void	solve(t_base *base)
 	pthread_t	waiter;
 
 	if (pthread_mutex_init(&base->lock, NULL) != 0 )
-		ft_error("MUTEX_INIT ERROR");
+		ft_error("MUTEX_INIT ERROR\n");
 	if (pthread_mutex_init(&base->print, NULL) != 0)
-		ft_error("MUTEX_INIT ERROR");
+		ft_error("MUTEX_INIT ERROR\n");
 	base->i = -1;
 	while (++base->i < base->ph_number)
 		if (pthread_mutex_init(&base->fork[base->i], NULL) != 0)
-			ft_error("MUTEX_INIT ERROR");
+			ft_error("MUTEX_INIT ERROR\n");
 	base->i = 0;
 	while (base->i < base->ph_number)
 	{
 		pthread_mutex_lock(&base->lock);
 		if (pthread_create(&base->philosopher[base->i],
 				NULL, phil_life, (void *)base) != 0)
-			ft_error("THREAD ERROR");
+			ft_error("THREAD ERROR\n");
 		pthread_detach(base->philosopher[base->i]);
 		pthread_mutex_lock(&base->lock);
 		base->i++;
@@ -69,7 +69,7 @@ static void	base_init(t_base *base, int ac, char **av)
 			* base->ph_number);
 	base->life_time = (int *)malloc(sizeof(int) * base->ph_number);
 	if (!(base->fork) || !(base->philosopher) || !(base->life_time))
-		ft_error("MALLOC ERROR");
+		ft_error("MALLOC ERROR\n");
 }
 
 int	main(int ac, char **av)
@@ -77,16 +77,18 @@ int	main(int ac, char **av)
 	t_base	*base;
 
 	if (ac < 5 || ac > 6 || check_arg(ac, av))
-		ft_error("ARG ERROR");
+		ft_error("ARG ERROR\n");
 	base = (t_base *)malloc(sizeof(t_base));
 	if (!base)
-		ft_error("MALLOC ERROR");
+		ft_error("MALLOC ERROR\n");
 	base_init(base, ac, av);
 	solve(base);
 	if (base->philosopher)
 		free(base->philosopher);
 	if (base->fork)
 		free(base->fork);
+	if (base->life_time)
+		free(base->life_time);
 	if (base)
 		free(base);
 	return (0);

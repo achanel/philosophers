@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:06:03 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/20 14:28:01 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 15:11:40 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	one_filo(t_base *base)
 {
 	ft_delay(base->time_to_die);
 	ft_print(base, 1, "died");
-	exit (0);
+	exit (1);
 }
 
 static void	eating(t_base *base, int number)
@@ -57,7 +57,7 @@ void	phil_life(t_base *base)
 	pthread_t	waiter;
 
 	if (pthread_create(&waiter, NULL, waiter_life, (void *)base) != 0)
-		ft_error("THREAD ERROR");
+		ft_error("THREAD ERROR\n");
 	pthread_detach(waiter);
 	if (base->i % 2)
 		ft_delay(base->time_to_eat / 2);
