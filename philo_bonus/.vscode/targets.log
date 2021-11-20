@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `philo_bonus.o', needed by `philo_bonus'.  Stop.
  
 
-# Make data base, printed on Mon Nov 15 17:42:46 2021
+# Make data base, printed on Sat Nov 20 14:27:51 2021
 
 # Variables
 
@@ -29,7 +29,7 @@ VSCODE_LOG_NATIVE = false
 # makefile (from `Makefile', line 17)
 BONUS_OBJS = ${BONUS:.c=.o}
 # makefile
-CURDIR := /Users/achanel/Desktop/philosophers/philo_bonus
+CURDIR := /Users/achanel/Desktop/bonus/philo_bonus
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 20)
@@ -51,11 +51,11 @@ BONUS =
 # makefile (from `Makefile', line 15)
 OBJS = ${SRCS:.c=.o}
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vm6800yx1k/T/vscode-ipc-6dc7b6c3-c395-433e-9c59-371873faf12a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vm6800yx1k/T/vscode-ipc-f743b62a-7176-473b-8db8-802a036f7ba9.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.QDN4akgxNi/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.0Bv3l69Eq2/Render
 # environment
 PATH = /Users/achanel/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -67,7 +67,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UyQqn3l51T/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.wjZnicPKSU/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -75,7 +75,7 @@ HOMEBREW_TEMP = /tmp/achanel/Homebrew/Temp
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/achanel/Desktop/philosophers/philo_bonus
+PWD = /Users/achanel/Desktop/bonus/philo_bonus
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -139,7 +139,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000008.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -161,7 +161,7 @@ HEADER = -I includes/
 # makefile (from `Makefile', line 5)
 HEADER_FILE = includes/philo_bonus.h
 # environment
-SECURITYSESSIONID = 186fe
+SECURITYSESSIONID = 186fc
 # automatic
 ^F = $(notdir $^)
 # default
@@ -173,7 +173,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 80334
+VSCODE_PID = 35350
 # makefile (from `Makefile', line 3)
 FILES = philo_bonus.c utils_bonus.c solve_bonus.c solve_utils_bonus.c
 # variable set hash-table stats:
@@ -185,7 +185,7 @@ FILES = philo_bonus.c utils_bonus.c solve_bonus.c solve_utils_bonus.c
 
 # Directories
 
-# . (device 16777227, inode 1169311): 10 files, no impossibilities.
+# . (device 16777227, inode 1272494): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -201,7 +201,6 @@ all: philo_bonus
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -225,7 +224,7 @@ solve_bonus.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-15 17:42:46
+#  Last modified 2021-11-20 14:22:55
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -324,6 +323,6 @@ solve_utils_bonus.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Nov 15 17:42:46 2021
+# Finished Make data base on Sat Nov 20 14:27:51 2021
 
  

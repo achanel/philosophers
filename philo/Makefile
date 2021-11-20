@@ -19,7 +19,7 @@ BONUS_OBJS	= ${BONUS:.c=.o}
 CC			= gcc
 RM			= rm -f
 
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 
 all:		${NAME}
 

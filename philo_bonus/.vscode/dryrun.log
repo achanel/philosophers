@@ -1,10 +1,10 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/achanel/Desktop/philosophers/philo_bonus'
+make: Entering directory `/Users/achanel/Desktop/bonus/philo_bonus'
 gcc -Wall -Wextra -Werror -I includes/ -c philo_bonus.c -o philo_bonus.o
-gcc -Wall -Wextra -Werror -I includes/ -c utils_bonus.c -o utils_bonus.o
  
+gcc -Wall -Wextra -Werror -I includes/ -c utils_bonus.c -o utils_bonus.o
 gcc -Wall -Wextra -Werror -I includes/ -c solve_bonus.c -o solve_bonus.o
 gcc -Wall -Wextra -Werror -I includes/ -c solve_utils_bonus.c -o solve_utils_bonus.o
 gcc -Wall -Wextra -Werror -I includes/ .//philo_bonus.o .//utils_bonus.o .//solve_bonus.o .//solve_utils_bonus.o -o philo_bonus
-make: Leaving directory `/Users/achanel/Desktop/philosophers/philo_bonus'
+make: Leaving directory `/Users/achanel/Desktop/bonus/philo_bonus'
  

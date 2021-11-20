@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:15:32 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/15 16:53:22 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 13:12:24 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_base
 	int			i;
 	int			j;
 	int			status;
-	int			*life_time;
+	long		life_time;
+	int			eating_times;
 }	t_base;
 
 // solve_utils_bonus.c

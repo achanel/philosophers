@@ -6,7 +6,7 @@
 /*   By: achanel <achanel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 15:06:03 by achanel           #+#    #+#             */
-/*   Updated: 2021/11/15 16:08:02 by achanel          ###   ########.fr       */
+/*   Updated: 2021/11/20 14:06:39 by achanel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ static int	ft_stick(t_base *base)
 {
 	long	time;
 	int		i;
-	int		g;
 
 	i = -1;
 	time = ft_time(base) - 2;
 	while (++i < base->ph_number)
 	{
-		g = base->life_time[i];
 		if (base->life_time[i] != -1)
 		{
 			if ((base->life_time[i] + base->time_to_die) < time)

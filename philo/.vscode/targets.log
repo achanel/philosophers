@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Nov 15 12:24:26 2021
+# Make data base, printed on Sat Nov 20 14:31:13 2021
 
 # Variables
 
@@ -26,7 +26,7 @@ VSCODE_LOG_NATIVE = false
 # makefile (from `Makefile', line 17)
 BONUS_OBJS = ${BONUS:.c=.o}
 # makefile
-CURDIR := /Users/achanel/Desktop/philosophers/philo
+CURDIR := /Users/achanel/Desktop/bonus/philo
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 20)
@@ -36,7 +36,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 22)
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # makefile (from `Makefile', line 11)
@@ -48,11 +48,11 @@ BONUS =
 # makefile (from `Makefile', line 15)
 OBJS = ${SRCS:.c=.o}
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vm6800yx1k/T/vscode-ipc-852e8243-c21d-40e4-91fc-640abac6397b.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vm6800yx1k/T/vscode-ipc-dcb98ab5-46c3-45ed-b2ca-afc97dad2dd5.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.QDN4akgxNi/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.0Bv3l69Eq2/Render
 # environment
 PATH = /Users/achanel/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -64,7 +64,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UyQqn3l51T/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.wjZnicPKSU/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -72,7 +72,7 @@ HOMEBREW_TEMP = /tmp/achanel/Homebrew/Temp
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/achanel/Desktop/philosophers/philo
+PWD = /Users/achanel/Desktop/bonus/philo
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -136,7 +136,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000008.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -158,7 +158,7 @@ HEADER = -I includes/
 # makefile (from `Makefile', line 5)
 HEADER_FILE = includes/philo.h
 # environment
-SECURITYSESSIONID = 186fe
+SECURITYSESSIONID = 186fc
 # automatic
 ^F = $(notdir $^)
 # default
@@ -170,7 +170,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 80334
+VSCODE_PID = 35350
 # makefile (from `Makefile', line 3)
 FILES = philo.c utils.c solve.c solve_utils.c
 # variable set hash-table stats:
@@ -182,9 +182,9 @@ FILES = philo.c utils.c solve.c solve_utils.c
 
 # Directories
 
-# . (device 16777227, inode 1216538): 16 files, no impossibilities.
+# . (device 16777227, inode 1272473): 11 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -197,16 +197,14 @@ all: philo
 #  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Successfully updated.
+#  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 philo: philo.o utils.o solve.o solve_utils.o includes/philo.h
 #  Implicit rule search has not been done.
-#  Last modified 2021-11-14 14:43:51
-#  File has been updated.
-#  Successfully updated.
+#  File does not exist.
+#  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 30):
@@ -220,12 +218,9 @@ philo: philo.o utils.o solve.o solve_utils.o includes/philo.h
 
 # Not a target:
 solve_utils.o:
-#  Implicit rule search has been done.
-#  Last modified 2021-11-14 14:43:51
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -236,7 +231,7 @@ solve_utils.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-14 14:01:28
+#  Last modified 2021-11-20 14:27:19
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -245,9 +240,8 @@ Makefile:
 # Not a target:
 philo.o:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-14 14:43:51
-#  File has been updated.
-#  Successfully updated.
+#  File does not exist.
+#  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -276,12 +270,9 @@ fclean: clean
 
 # Not a target:
 solve.o:
-#  Implicit rule search has been done.
-#  Last modified 2021-11-14 14:43:51
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -291,12 +282,9 @@ solve.o:
 
 # Not a target:
 includes/philo.h:
-#  Implicit rule search has been done.
-#  Last modified 2021-11-14 14:24:35
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -315,13 +303,9 @@ clean:
 
 # Not a target:
 utils.o:
-#  Implicit rule search has been done.
-#  Last modified 2021-11-14 14:43:51
-#  File has been updated.
-#  Successfully updated.
- 
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
 # Load=16/1024=2%, Rehash=0, Collisions=2/43=5%
@@ -336,6 +320,8 @@ utils.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Nov 15 12:24:26 2021
+# Finished Make data base on Sat Nov 20 14:31:13 2021
 
+ 
+make: *** No rule to make target `philo.o', needed by `philo'.  Stop.
  
